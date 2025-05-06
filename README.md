@@ -1,16 +1,22 @@
 # social_meter
 
-A new Flutter project.
+Social Meter is a flutter application designed to visually demonstrate the finite nature of energy and the importance of prioritization in life. This app uses an interactive energy meter and activity management system to encourage a mindful living and intentional decision making.
 
-## Getting Started
+## Key Features
+- Energy Meter: A global energy bar (0-100%) that represents the total available energy.
 
-This project is a starting point for a Flutter application.
+- Activity Management:
+  - Add and manage activities with individual energy allocations.
+  - Adjust energy spent on each activity using sliders.
 
-A few resources to get you started if this is your first Flutter project:
+- Dynamic Visualization: Watch the global energy meter decrease as more energy is allocated to activities.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Interactive UI: Simple and intuitive interface for users of all ages.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Philosophical Concept
+This app embodies the idea that our energy and time are finite resources. It emphasizes:
+
+- The need for prioritizing activities.
+- Awareness of opportunity costs.
+- The importance of balance and avoiding burnout.
+- Intentional living and mindful decision-making.
