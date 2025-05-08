@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:dashed_circular_progress_bar/dashed_circular_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:social_meter/models/activity.dart';
 import 'package:social_meter/widgets/dialogs/add_activity_dialog.dart';
@@ -13,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _activityList = <Activity>[];
-  double _currentEnergy = 1; // 1 = 100%
+  double _currentEnergy = 0; //0-1
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,6 +34,31 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(30),
                   );
                 },
+              ),
+              SizedBox(height: 10),
+              DashedCircularProgressBar.aspectRatio(
+                aspectRatio: 5/3,
+                maxProgress: 100,
+                progress: _currentEnergy * 100,
+                animation: true,
+                backgroundColor: Colors.grey.shade500,
+                foregroundColor: Colors.brown.shade400,
+                foregroundStrokeWidth: 6,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "${(_currentEnergy * 100).toStringAsFixed(2)}%",
+                        style: TextStyle(fontSize: 30),
+                      ),
+                      Text(
+                        "Remaining Energy",
+                        style: TextStyle(color: Colors.black54,fontSize: 17),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               SizedBox(height: 10),
               Expanded(
@@ -140,7 +166,8 @@ class _HomeScreenState extends State<HomeScreen> {
       return previousValue + element.energy;
     });
 
-    _currentEnergy = 1 - totalActivityEnergy;
+    _currentEnergy = 1 - (totalActivityEnergy / _activityList.length);
+    log("current energy $_currentEnergy", name: 'home-screen');
   }
 
   void _updateCheckboxState(bool? isChecked, Activity item, int index) {
